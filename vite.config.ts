@@ -8,7 +8,8 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'icons.svg'],
+      includeAssets: ['favicon.svg', 'icons.svg', 'apple-touch-icon.png'],
+      workbox: { globIgnores: ['**/push/**'] },
       manifest: {
         name: '3zab ♡ Nouna Sanctuary',
         short_name: 'Sanctuary',
@@ -16,6 +17,7 @@ export default defineConfig({
         theme_color: '#f9f9f9',
         background_color: '#ffffff',
         display: 'standalone',
+        id: '/', start_url: '/', scope: '/',
         icons: [
           {
             src: 'pwa-192x192.png',

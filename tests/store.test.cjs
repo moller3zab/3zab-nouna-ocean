@@ -8,7 +8,7 @@ function setup() {
   const subscriptions = [], events = [], writes = [];
   let fail = false;
   const api = {
-    db: {}, collection: (_, name) => ({ name }), doc: (_, name, id) => ({ name, id }),
+    db: {}, getDoc: async()=>({data:()=>({})}), collection: (_, name) => ({ name }), doc: (parent, name, id) => name === undefined ? ({name:parent.name,id:'new-id'}) : ({ name, id }),
     onSnapshot: (ref, next, error) => { subscriptions.push({ ref, next, error }); return () => {}; },
     addDoc: async (ref, data) => { if (fail) throw { code: 'permission-denied' }; writes.push({ ref, data }); return { id: 'new-id' }; },
     setDoc: async (ref, data) => { if (fail) throw { code: 'permission-denied' }; writes.push({ ref, data }); },
@@ -17,7 +17,7 @@ function setup() {
   };
   const code = ts.transpileModule(fs.readFileSync('src/lib/store.ts', 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText;
   const module = { exports: {} };
-  vm.runInNewContext(code, { module, exports: module.exports, require: () => api, Date, Event, CustomEvent,
+  vm.runInNewContext(code, { module, exports: module.exports, require: name => name === './pushEvents' ? {preparePushEvent:()=>null,cancelPushEvent(){},flushPushEvents:async()=>{}} : api, Date, Event, CustomEvent,
     window: { dispatchEvent: event => events.push(event) },
     localStorage: new Proxy({}, { get() { throw new Error('Journal must never use localStorage'); } }),
   });

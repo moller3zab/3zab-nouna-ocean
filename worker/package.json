@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "@block65/webcrypto-web-push": "^2.0.0",
+    "jose": "^6.2.14"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261030.1",
+    "esbuild": "^0.28.2",
+    "http_ece": "^1.2.1",
+    "miniflare": "^4.20260730.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  },
+  "name": "ocean-free-push",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "optionalDependencies": {
+    "@cloudflare/workerd-windows-64": "^1.20260730.1"
+  }
+}

@@ -2,13 +2,29 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     function isMember() {
-      return request.auth != null && request.auth.uid in [
-        'EJ9SoDzXCLgHBgXglBU703ZOcXH2',
-        'NJRJQyKj7JbSVBQeAYbKUOm8vcY2'
-      ];
+      return request.auth != null && request.auth.uid in ['EJ9SoDzXCLgHBgXglBU703ZOcXH2','NJRJQyKj7JbSVBQeAYbKUOm8vcY2'];
     }
-    match /{document=**} {
-      allow read, write: if isMember();
+    function mediaKind() {
+      let data=request.resource.data;
+      return ('videoUrl' in data && data.videoUrl is string && data.videoUrl.size()>0) ? 'video'
+        : ('imageUrl' in data && data.imageUrl is string && data.imageUrl.size()>0) ? 'photo' : 'none';
     }
+    function validPushMeta() {
+      let meta=request.resource.data.pushMeta;
+      return meta is map && meta.keys().hasOnly(['uid','eventId','at','media'])
+        && meta.media == mediaKind()
+        && meta.uid == request.auth.uid && meta.at == request.time
+        && meta.eventId is string && meta.eventId.matches('^[A-Za-z0-9_-]{16,80}$');
+    }
+    // Legacy records/clients retain existing access. Any write to a protected record
+    // must attest the actual authenticated writer and the server commit time.
+    match /{collection}/{id} {
+      allow read, delete: if isMember();
+      allow create: if isMember() && (!('pushMeta' in request.resource.data) || validPushMeta());
+      allow update: if isMember() && (
+        (!('pushMeta' in resource.data) && !('pushMeta' in request.resource.data))
+        || ('pushMeta' in request.resource.data && validPushMeta()));
+    }
+    match /{collection}/{id}/{subcollection}/{subdocument}/{nested=**} { allow read,write: if isMember(); }
   }
 }

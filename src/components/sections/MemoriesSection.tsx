@@ -15,8 +15,8 @@ const CATEGORIES = ['All Preserved', 'Zamalek Date', 'Special Days', 'Sweet Snap
 export const MemoriesSection: React.FC = () => {
   const { identity } = useIdentity();
   const [memories, setMemories] = useState<Memory[]>(INITIAL_MEMORIES);
-  const [destination, setDestination] = useState<'gallery' | 'wall'>('wall');
-  const [view, setView] = useState<'gallery' | 'wall'>('wall');
+  const [destination, setDestination] = useState<'gallery' | 'wall'>(new URLSearchParams(location.search).get('pushView') === 'gallery' ? 'gallery' : 'wall');
+  const [view, setView] = useState<'gallery' | 'wall'>(new URLSearchParams(location.search).get('pushView') === 'gallery' ? 'gallery' : 'wall');
   const [activeFilter, setActiveFilter] = useState('All Preserved');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);

@@ -29,9 +29,9 @@ Optional appearance settings live in `settings/site`: title, subtitle, relations
 
 ## Verification limits
 
-`npm test` tests the actual data adapter with mocked Firebase calls: image values, missing createdAt, empty snapshots, denied reads, failed writes, and peace room fields. Browser visual checks use an isolated fixture; those records are not included in the running application. Live retrieval requires signing in with one of the two real accounts and published rules. Administrator access from the current CLI account remains unavailable, so the existing database cannot be independently inspected here.
+`npm test` tests the actual data adapter with mocked Firebase calls: image values, missing createdAt, empty snapshots, denied reads, failed writes, and peace room fields. Browser visual checks use an isolated fixture; those records are not included in the running application. Live retrieval requires signing in with one of the two real accounts and published rules. The push release verified the actual Firebase account identities and read-only backend access; automated tests do not modify production application data.
 
-Do not deploy this preview over production until you choose to replace the original. Both folders target the same Firebase project; `firebase deploy --only hosting` would replace its hosted website.
+The authorized push release is published to https://ahmedwanfal.web.app. Future Hosting deployments replace that site; review changes before deploying.
 
 ## Preserved legacy media
 The original relationship date (2026-09-04) and existing finale video are retained as fallbacks until settings/site supplies replacements. Music embeds use autoplay=0 and have no autoplay permission. Add Memory lets you choose Curated Gallery (memories) or Polaroid Wall (polaroids).
@@ -41,3 +41,6 @@ The browser-audit.js runner is a Playwright callback used by the browser tool wi
 
 ## Local music player
 Music now plays directly from complete audio files in public/music using the custom Stitch controls, with no provider embeds. predev/prebuild regenerate the local catalog; restart dev after adding new files. Optional ffprobe tags supply titles/artists; filenames are the fallback. Playlist metadata and hidden tracks are saved to Firestore under stable local song IDs. Removing a song hides it from the playlist and retains the source file. Older provider records remain in Firebase but are not shown in this local player. Incomplete .crdownload files are ignored by the catalog, Git, and build output. Browser checks confirmed real playback/pause, seeking, volume, next track, repeat, shuffle, and no initial autoplay.
+
+## Verified Web Push
+VAPID device verification, activity previews, private registry configuration and real-device acceptance checklist: see PUSH_SETUP.md. The free-tier Worker, Hosting site and metadata validation rules are deployed. Device enrollment and physical iPhone/Android delivery acceptance remain required.

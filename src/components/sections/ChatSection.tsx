@@ -1,3 +1,4 @@
+import { PushSubscription } from '../ui/PushSubscription';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Heart, Sparkles, MessageCircle, Edit3, Trash2, X } from 'lucide-react';
@@ -12,6 +13,10 @@ export const ChatSection: React.FC = () => {
   const [text, setText] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (location.hash === '#our-chat') requestAnimationFrame(() => document.getElementById('our-chat')?.scrollIntoView());
+  }, []);
 
   useEffect(() => {
     const unsub = subscribeCollection<ChatMessage>('messages', INITIAL_MESSAGES, (data) => {
@@ -71,6 +76,7 @@ export const ChatSection: React.FC = () => {
         </p>
       </div>
 
+      <PushSubscription />
       {/* Chat Container Box */}
       <div className="max-w-2xl mx-auto w-full bg-surface-lowest dark:bg-surface-dark-card rounded-3xl shadow-elevated border border-primary/10 dark:border-white/10 flex flex-col h-[500px] overflow-hidden">
         

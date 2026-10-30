@@ -1,4 +1,5 @@
-import { db, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, setDoc } from './firebase';
+import { db, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, setDoc, getDoc } from './firebase';
+import { preparePushEvent, cancelPushEvent, flushPushEvents } from './pushEvents';
 import type { PeaceRoomData, MoodStatus, Notification as AppNotification } from '../types';
 
 export function reportSync(name: string, status: 'loading' | 'ready' | 'error', message = '', count?: number) {
@@ -30,9 +31,30 @@ async function write<T>(action: () => Promise<T>): Promise<T> {
   }
 }
 export async function addItem<T extends Record<string, any>>(name: string, item: T) {
-  return write(async () => (await addDoc(collection(db, name), { ...item, createdAt: Date.now() })).id);
+  return write(async () => {
+    const ref=doc(collection(db,name));
+    const push=preparePushEvent(name,ref.id,item);
+    try { await setDoc(ref,{...item,createdAt:Date.now(),...(push?{pushMeta:push.metadata}:{})}); }
+    catch(error){if(push)cancelPushEvent(push.event.eventId);throw error;}
+    void flushPushEvents();
+    return ref.id;
+  });
 }
-export const updateItem = (name: string, id: string, updates: Record<string, any>) => write(() => updateDoc(doc(db, name, id), updates));
+export async function saveSong(id:string,item:Record<string,unknown>){
+  return write(async()=>{
+    const push=preparePushEvent('songs',id,item);
+    try{await setDoc(doc(db,'songs',id),{...item,...(push?{pushMeta:push.metadata}:{})},{merge:true});}
+    catch(error){if(push)cancelPushEvent(push.event.eventId);throw error;}
+    void flushPushEvents();
+  });
+}
+export const updateItem = (name: string, id: string, updates: Record<string, any>) => write(async () => {
+  const ref=doc(db,name,id); const snapshot=await getDoc(ref);
+  const push=preparePushEvent(name,id,{...snapshot.data(),...updates});
+  try{await updateDoc(ref,{...updates,...(push?{pushMeta:push.metadata}:{})});}
+  catch(error){if(push)cancelPushEvent(push.event.eventId);throw error;}
+  void flushPushEvents();
+});
 export const removeItem = (name: string, id: string) => write(() => deleteDoc(doc(db, name, id)));
 export function subscribePeaceRoom(callback: (data: PeaceRoomData) => void) {
   reportSync('peaceRoom', 'loading');

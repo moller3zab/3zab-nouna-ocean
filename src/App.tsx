@@ -1,7 +1,7 @@
 import { OceanInterlude } from './components/ui/OceanInterlude';
 import { OceanBackdrop } from './components/ui/OceanBackdrop';
 import { PhotoViewer } from './components/ui/PhotoViewer';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArchiveProvider } from './context/ArchiveContext';
 import { ArchiveStatus } from './components/ui/ArchiveStatus';
 import { Footer } from './components/layout/Footer';
@@ -30,6 +30,12 @@ import { MoodWidget } from './components/ui/MoodWidget';
 export const AppContent: React.FC = () => {
   const { isUnlocked } = useIdentity();
   const [celebrating, setCelebrating] = useState(false);
+  useEffect(() => {
+    if (isUnlocked && !celebrating && location.hash) {
+      const timer = setTimeout(() => document.getElementById(location.hash.slice(1))?.scrollIntoView(), 350);
+      return () => clearTimeout(timer);
+    }
+  }, [isUnlocked, celebrating]);
   if (!isUnlocked || celebrating) return <GateModal onCelebrating={setCelebrating} />;
   return (
     <ArchiveProvider><div className="ocean-world min-h-screen bg-surface dark:bg-surface-dark text-ink dark:text-ink-dark transition-colors duration-300 relative selection:bg-secondary-light selection:text-primary">

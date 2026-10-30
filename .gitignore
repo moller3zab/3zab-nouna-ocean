@@ -28,3 +28,11 @@ dist-ssr
 *.sln
 *.sw?
 *.crdownload
+
+OneSignalSDK-v16-ServiceWorker.zip
+functions/.secret.local
+
+**/.secret.local
+worker/.dev.vars
+worker/.cf/
+worker/.mf/

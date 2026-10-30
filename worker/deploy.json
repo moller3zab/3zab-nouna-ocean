@@ -1,0 +1,16 @@
+{
+  "name": "ocean-free-push",
+  "accountId": "603e47c2aa30fbfad821cd870f50ea21",
+  "compatibilityDate": "2026-10-30",
+  "bindings": {
+    "DB": "D1Database",
+    "VAPID_JSON": "secret",
+    "PUSH_ENABLED": "string",
+    "PREVIEWS_ENABLED": "string",
+    "RULES_ATTESTATION_READY": "string",
+    "IDENTITY_MAP": "string",
+    "FIREBASE_READER_JSON": "secret",
+    "BENCHMARK_TOKEN": "secret",
+    "ATTESTATION_SINCE": "string"
+  }
+}
