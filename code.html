@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>3zab ♡ Nouna — Our Private Universe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            ocean: {
+              title: "#163242",
+              main: "#24485C",
+              body: "#3B6980",
+              muted: "#5C8A9E",
+              accent: "#1C667C",
+              seafoam: "#74B5BB",
+              light: "#8CCDE6",
+              sky: "#B8E4F5",
+              foam: "#DDF5FF",
+            }
+          },
+          fontFamily: {
+            display: ["Playfair Display", "serif"],
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #DDF5FF;
+      color: #24485C;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .frosted-glass {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 10px 32px -5px rgba(36, 72, 92, 0.07), 0 1px 2px rgba(255, 255, 255, 0.9) inset;
+    }
+    .frosted-card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: 0 6px 24px -4px rgba(36, 72, 92, 0.05);
+    }
+    @keyframes float-bubble {
+      0% { transform: translateY(105vh) scale(0.8); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.6; }
+      100% { transform: translateY(-10vh) scale(1.1); opacity: 0; }
+    }
+    @keyframes eq-wave {
+      0%, 100% { height: 6px; }
+      50% { height: 22px; }
+    }
+  </style>
+</head>
+<body class="bg-[#DDF5FF] text-ocean-main antialiased selection:bg-[#8CCDE6]/40 selection:text-ocean-title">
+
+  <!-- ========================================================================= -->
+  <!-- SUNLIT UNDERWATER CAUSTICS & LIGHT SHAFTS BACKGROUND                      -->
+  <!-- ========================================================================= -->
+  <div class="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+    <canvas id="caustics-canvas" class="w-full h-full block opacity-80"></canvas>
+    <div class="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-[#B8E4F5]/35"></div>
+    <div class="absolute -top-32 left-1/4 w-[60rem] h-[32rem] bg-gradient-to-b from-white/65 to-transparent blur-3xl transform -rotate-12 pointer-events-none opacity-70"></div>
+    
+    <!-- Floating Gentle Bubbles -->
+    <div class="absolute w-4 h-4 rounded-full bg-white/50 backdrop-blur-sm left-[12%] animate-[float-bubble_14s_infinite_linear]"></div>
+    <div class="absolute w-3 h-3 rounded-full bg-white/40 backdrop-blur-sm left-[38%] animate-[float-bubble_18s_infinite_2s_linear]"></div>
+    <div class="absolute w-5 h-5 rounded-full bg-white/45 backdrop-blur-sm left-[68%] animate-[float-bubble_16s_infinite_4s_linear]"></div>
+    <div class="absolute w-2.5 h-2.5 rounded-full bg-white/60 backdrop-blur-sm left-[88%] animate-[float-bubble_13s_infinite_1s_linear]"></div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- GLOBAL HEADER (LIGHT LUXURY SUNNY MORNING CHROME)                         -->
+  <!-- ========================================================================= -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-white/75 backdrop-blur-2xl border-b border-white/70 shadow-[0_4px_20px_rgba(36,72,92,0.04)]">
+    <div class="h-20 max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-white shadow-sm border border-white flex items-center justify-center text-ocean-accent font-display text-xl font-bold">
+          ♡
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <span class="font-display text-xl font-bold text-ocean-title tracking-tight">3zab ♡ Nouna</span>
+            <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-[#8CCDE6]/35 text-ocean-accent text-[11px] font-semibold tracking-wider">Est. 04.09.2026</span>
+          </div>
+          <span class="text-[11px] text-ocean-muted uppercase tracking-widest font-semibold">Our Private Universe</span>
+        </div>
+      </div>
+      
+      <!-- Center Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-1 bg-white/65 border border-white/80 p-1.5 rounded-full shadow-inner">
+        <a class="transition-all bg-[#8CCDE6] text-ocean-title text-xs font-bold rounded-full px-3.5 py-1.5 shadow-sm" href="#">Home</a>
+        <a class="px-3 py-1.5 rounded-full text-ocean-body hover:text-ocean-title hover:bg-white/60 transition-colors text-xs font-semibold" href="#story">Our Story</a>
+        <a class="px-3 py-1.5 rounded-full text-ocean-body hover:text-ocean-title hover:bg-white/60 transition-colors text-xs font-semibold" href="#memories">Memories</a>
+        <a class="px-3 py-1.5 rounded-full text-ocean-body hover:text-ocean-title hover:bg-white/60 transition-colors text-xs font-semibold" href="#soundtrack">Soundtrack</a>
+        <a class="px-3 py-1.5 rounded-full text-ocean-body hover:text-ocean-title hover:bg-white/60 transition-colors text-xs font-semibold" href="#letters">Letters</a>
+        <a class="px-3 py-1.5 rounded-full text-ocean-body hover:text-ocean-title hover:bg-white/60 transition-colors text-xs font-semibold" href="#dreams">Dreams</a>
+        <a class="px-3 py-1.5 rounded-full text-ocean-body hover:text-ocean-title hover:bg-white/60 transition-colors text-xs font-semibold" href="#chat">Chat</a>
+        <a class="px-3 py-1.5 rounded-full text-ocean-body hover:text-ocean-title hover:bg-white/60 transition-colors text-xs font-semibold" href="#peace-room">Peace Room</a>
+      </nav>
+
+      <!-- Right Presence Pill & Actions -->
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-white shadow-sm">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-ocean-accent animate-pulse"></span>
+            <span class="text-xs text-ocean-accent font-bold">Ahmed</span>
+          </div>
+          <span class="text-ocean-muted text-xs">•</span>
+          <div class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-ocean-seafoam animate-pulse"></span>
+            <span class="text-xs text-ocean-title font-bold">Anfal</span>
+          </div>
+        </div>
+        <button aria-label="Notifications" class="p-2 rounded-full text-ocean-body hover:text-ocean-title hover:bg-white/60 transition-colors" type="button">
+          <span class="material-symbols-outlined text-[20px]">notifications</span>
+        </button>
+        <div class="w-9 h-9 rounded-full bg-ocean-accent flex items-center justify-center text-white shadow-sm font-semibold text-xs">
+          3N
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN SCROLLING EXPERIENCE                                                 -->
+  <!-- ========================================================================= -->
+  <main class="w-full pt-20 relative z-10">
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 01: HERO & RELATIONSHIP COUNTDOWN                              -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full min-h-[860px] flex flex-col justify-center items-center px-6 pt-12 pb-20 text-center">
+      <div class="max-w-5xl mx-auto flex flex-col items-center gap-6 relative z-10">
+        <!-- Overline Pill -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full frosted-glass border border-white shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-ocean-accent animate-ping"></span>
+          <span class="text-xs text-ocean-accent tracking-[0.25em] uppercase font-bold">Our Private Universe</span>
+          <span class="text-ocean-muted/60">•</span>
+          <span class="text-xs text-ocean-body font-semibold">Established 04.09.2026</span>
+        </div>
+
+        <!-- Main Romantic Headline -->
+        <h1 class="font-display text-5xl md:text-7xl lg:text-8xl text-ocean-title font-medium tracking-tight drop-shadow-[0_2px_15px_rgba(255,255,255,0.8)] leading-tight">
+          3zab <span class="text-ocean-accent italic inline-block transform hover:scale-110 transition-transform">♡</span> Nouna
+        </h1>
+        <p class="text-lg md:text-xl text-ocean-body max-w-2xl font-light leading-relaxed">
+          Our private digital world. Not a portfolio, not a template — just us, suspended beneath sunny morning skies and crystal-clear tides.
+        </p>
+
+        <!-- Squidward & Moai Sanctum Tableau -->
+        <div class="w-full max-w-4xl p-6 rounded-3xl frosted-glass flex flex-col md:flex-row items-center justify-between gap-6 my-2 relative overflow-hidden border border-white">
+          <div class="relative flex items-center gap-6">
+            <div class="relative w-28 h-28 md:w-32 md:h-32 rounded-2xl overflow-hidden bg-white/90 shadow-md shrink-0 border border-white">
+              <img class="w-full h-full object-cover" alt="Squidward Tentacles at the Moai House" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1V82Ccx2ynxTLq7RYoelD6X3PWdzz1i31NjyFPflHWWHMi0lu4h3NHS_1B3AR8RdboCH99m0yQFc7boZ9ZQVQP7Jb0uJIFlcM6RtaXFC46fgY-7u3WXEAZ4KS0Nl28zzgpKpSrNxzk_9mNHo5iU7zECPdsdYVbhoE6VtdckH8YhfeBo__u0DKy0TGgK-P3cZD1_n0qTvbFk99AaA6ztfc529erwxqM5yQBHt__e5kxo4GB7a-UwEuOw"/>
+              <span class="absolute bottom-2 left-2 text-[10px] uppercase tracking-wider text-ocean-title px-2 py-0.5 rounded-full bg-white/95 shadow-sm font-bold">Sanctum Guide</span>
+            </div>
+            <div class="text-left flex flex-col">
+              <span class="font-display text-2xl text-ocean-title font-semibold">The Moai Pavilion</span>
+              <span class="text-xs text-ocean-accent font-bold mt-0.5">Abyssal Coordinates: 24°32'N • Depth: -4,820 Fathoms</span>
+              <p class="text-sm text-ocean-body mt-1.5 max-w-xs leading-relaxed">
+                Squidward gazes peacefully into the sunny blue waters; peace restored, clarinet polished, our refuge secure.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/85 border border-white shadow-sm shrink-0">
+            <div class="w-3 h-3 rounded-full bg-ocean-seafoam animate-pulse"></div>
+            <div class="flex flex-col text-left">
+              <span class="text-[10px] text-ocean-muted uppercase tracking-widest font-bold">Sanctum Status</span>
+              <span class="text-sm text-ocean-accent font-bold">Sunny Tides • All Love Intact</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Relationship Countdown Chronometer -->
+        <div class="w-full max-w-3xl flex flex-col items-center gap-3 mt-2">
+          <span class="text-xs text-ocean-muted uppercase tracking-[0.2em] font-bold">Countdown to Forever &amp; Next Sacred Gateway</span>
+          <div class="grid grid-cols-4 gap-3 md:gap-6 w-full">
+            <div class="flex flex-col items-center justify-center p-4 md:p-6 rounded-2xl frosted-glass hover:bg-white/90 transition-all">
+              <span class="font-display text-3xl md:text-5xl text-ocean-accent font-bold tracking-tight">214</span>
+              <span class="text-[11px] text-ocean-muted uppercase tracking-wider mt-1 font-bold">Days</span>
+            </div>
+            <div class="flex flex-col items-center justify-center p-4 md:p-6 rounded-2xl frosted-glass hover:bg-white/90 transition-all">
+              <span class="font-display text-3xl md:text-5xl text-ocean-seafoam font-bold tracking-tight">14</span>
+              <span class="text-[11px] text-ocean-muted uppercase tracking-wider mt-1 font-bold">Hours</span>
+            </div>
+            <div class="flex flex-col items-center justify-center p-4 md:p-6 rounded-2xl frosted-glass hover:bg-white/90 transition-all">
+              <span class="font-display text-3xl md:text-5xl text-ocean-body font-bold tracking-tight">38</span>
+              <span class="text-[11px] text-ocean-muted uppercase tracking-wider mt-1 font-bold">Minutes</span>
+            </div>
+            <div class="flex flex-col items-center justify-center p-4 md:p-6 rounded-2xl frosted-glass hover:bg-white/90 transition-all">
+              <span class="font-display text-3xl md:text-5xl text-ocean-title font-bold tracking-tight">42</span>
+              <span class="text-[11px] text-ocean-muted uppercase tracking-wider mt-1 font-bold">Seconds</span>
+            </div>
+          </div>
+        </div>
+
+        <a class="flex flex-col items-center gap-1.5 mt-4 text-ocean-muted hover:text-ocean-accent transition-colors group" href="#mood">
+          <span class="text-xs tracking-[0.2em] uppercase font-bold">Scroll to immerse in our sanctuary</span>
+          <span class="material-symbols-outlined text-2xl group-hover:translate-y-1 transition-transform animate-bounce">keyboard_arrow_down</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 02: ATMOSPHERIC MOOD SYNC                                       -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-7xl mx-auto" id="mood">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs text-ocean-accent uppercase tracking-widest font-bold">Resonance Telemetry</span>
+          <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">Atmospheric Mood Sync</h2>
+        </div>
+        <button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/85 hover:bg-white text-ocean-accent text-sm font-bold shadow-sm border border-white transition-all" onclick="document.getElementById('mood-modal').classList.remove('hidden')" type="button">
+          <span class="material-symbols-outlined text-[18px]">edit_note</span>
+          Update Mood
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 3zab's Mood -->
+        <div class="p-8 rounded-3xl frosted-glass flex flex-col justify-between relative overflow-hidden group">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-white/95 shadow-sm border border-white flex items-center justify-center text-ocean-accent text-2xl">🌊</div>
+              <div class="flex flex-col">
+                <span class="font-display text-xl text-ocean-title font-bold">3zab's Resonance</span>
+                <span class="text-xs text-ocean-accent tracking-wider uppercase font-bold">Loved &amp; Peaceful</span>
+              </div>
+            </div>
+            <span class="text-xs text-ocean-muted bg-white/80 px-3 py-1 rounded-full border border-white font-semibold">Updated 12m ago</span>
+          </div>
+          <blockquote class="my-6 text-base text-ocean-main italic relative pl-4 bg-gradient-to-r from-[#8CCDE6]/25 via-transparent to-transparent py-2 rounded-r-lg border-l-2 border-ocean-accent">
+            “Listening to ocean waves thinking about our road trip plan. Feeling like the luckiest guy alive.”
+          </blockquote>
+          <div class="flex items-center justify-between pt-4 bg-white/70 px-4 py-2.5 rounded-2xl border border-white/80">
+            <span class="text-xs text-ocean-body font-semibold">Heart Resonance: Stable 72 BPM</span>
+            <span class="material-symbols-outlined text-ocean-accent text-[20px]">favorite</span>
+          </div>
+        </div>
+        <!-- Nouna's Mood -->
+        <div class="p-8 rounded-3xl frosted-glass flex flex-col justify-between relative overflow-hidden group">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-white/95 shadow-sm border border-white flex items-center justify-center text-ocean-seafoam text-2xl">🫧</div>
+              <div class="flex flex-col">
+                <span class="font-display text-xl text-ocean-title font-bold">Nouna's Resonance</span>
+                <span class="text-xs text-ocean-seafoam tracking-wider uppercase font-bold">Missing You</span>
+              </div>
+            </div>
+            <span class="text-xs text-ocean-muted bg-white/80 px-3 py-1 rounded-full border border-white font-semibold">Updated 3m ago</span>
+          </div>
+          <blockquote class="my-6 text-base text-ocean-main italic relative pl-4 bg-gradient-to-r from-ocean-seafoam/25 via-transparent to-transparent py-2 rounded-r-lg border-l-2 border-ocean-seafoam">
+            “Counting down the hours until our late night call. Wearing your oversized jacket today.”
+          </blockquote>
+          <div class="flex items-center justify-between pt-4 bg-white/70 px-4 py-2.5 rounded-2xl border border-white/80">
+            <span class="text-xs text-ocean-body font-semibold">Heart Resonance: Synchronized 72 BPM</span>
+            <span class="material-symbols-outlined text-ocean-seafoam text-[20px]">bubble_chart</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mood Update Modal -->
+      <div class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-ocean-title/25 backdrop-blur-md" id="mood-modal">
+        <div class="w-full max-w-md p-6 rounded-3xl bg-white/95 backdrop-blur-2xl shadow-2xl border border-white flex flex-col gap-4 text-left">
+          <div class="flex items-center justify-between">
+            <h3 class="font-display text-2xl text-ocean-title font-bold">Transmit Mood</h3>
+            <button class="text-ocean-muted hover:text-ocean-title" onclick="document.getElementById('mood-modal').classList.add('hidden')" type="button">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+          <p class="text-xs text-ocean-body">Select your current abyssal state and share an inner reflection.</p>
+          <div class="grid grid-cols-3 gap-2">
+            <button class="px-3 py-2 rounded-xl bg-[#DDF5FF]/80 hover:bg-[#8CCDE6] text-ocean-title text-xs font-semibold transition-colors">✨ Happy</button>
+            <button class="px-3 py-2 rounded-xl bg-[#8CCDE6] text-ocean-title text-xs font-bold transition-colors">🫧 Missing</button>
+            <button class="px-3 py-2 rounded-xl bg-[#DDF5FF]/80 hover:bg-[#8CCDE6] text-ocean-title text-xs font-semibold transition-colors">🕯️ Stressed</button>
+            <button class="px-3 py-2 rounded-xl bg-[#DDF5FF]/80 hover:bg-[#8CCDE6] text-ocean-title text-xs font-semibold transition-colors">🌊 Loved</button>
+            <button class="px-3 py-2 rounded-xl bg-[#DDF5FF]/80 hover:bg-[#8CCDE6] text-ocean-title text-xs font-semibold transition-colors">🌙 Tired</button>
+            <button class="px-3 py-2 rounded-xl bg-[#DDF5FF]/80 hover:bg-[#8CCDE6] text-ocean-title text-xs font-semibold transition-colors">⚡ Excited</button>
+          </div>
+          <textarea class="w-full p-3 rounded-2xl bg-[#F4FAFD] border border-[#8CCDE6]/40 text-ocean-title placeholder:text-ocean-muted/60 text-xs outline-none focus:ring-2 focus:ring-ocean-accent" placeholder="Whisper your thought here..." rows="3"></textarea>
+          <div class="flex items-center justify-end gap-3 mt-2">
+            <button class="px-4 py-2 rounded-full text-ocean-body hover:text-ocean-title text-xs font-bold" onclick="document.getElementById('mood-modal').classList.add('hidden')" type="button">Cancel</button>
+            <button class="px-5 py-2 rounded-full bg-ocean-accent text-white text-xs font-bold shadow-sm hover:bg-ocean-title transition-colors" onclick="document.getElementById('mood-modal').classList.add('hidden')" type="button">Broadcast</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 03: COUNTDOWNS (Our Awaited Horizons)                            -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs text-ocean-accent uppercase tracking-widest font-bold">Chronometer Sanctuary</span>
+          <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">Our Awaited Horizons</h2>
+        </div>
+        <button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/85 hover:bg-white text-ocean-accent text-sm font-bold shadow-sm border border-white transition-all" type="button">
+          <span class="material-symbols-outlined text-[18px]">add_alarm</span>
+          + Add Countdown
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Dial 1 -->
+        <div class="p-6 rounded-3xl frosted-glass flex flex-col items-center text-center relative overflow-hidden group hover:scale-[1.01] transition-transform">
+          <div class="relative w-36 h-36 flex items-center justify-center my-2">
+            <svg class="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+              <circle class="text-white fill-transparent" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="7"></circle>
+              <circle class="text-ocean-accent fill-transparent" cx="50" cy="50" r="42" stroke="currentColor" stroke-dasharray="264" stroke-dashoffset="84" stroke-linecap="round" stroke-width="7"></circle>
+            </svg>
+            <div class="absolute flex flex-col items-center justify-center">
+              <span class="font-display text-3xl text-ocean-title font-bold">128</span>
+              <span class="text-[10px] text-ocean-muted uppercase font-bold">Days</span>
+            </div>
+          </div>
+          <h3 class="font-display text-xl text-ocean-title mt-3 font-bold">Our Next Anniversary</h3>
+          <span class="text-xs text-ocean-accent font-bold mt-1">October 14, 2026 • 68% Journey</span>
+          <p class="text-xs text-ocean-body mt-2 leading-relaxed">Celebrating every single tide crossed hand-in-hand.</p>
+        </div>
+        <!-- Dial 2 -->
+        <div class="p-6 rounded-3xl frosted-glass flex flex-col items-center text-center relative overflow-hidden group hover:scale-[1.01] transition-transform">
+          <div class="relative w-36 h-36 flex items-center justify-center my-2">
+            <svg class="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+              <circle class="text-white fill-transparent" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="7"></circle>
+              <circle class="text-ocean-seafoam fill-transparent" cx="50" cy="50" r="42" stroke="currentColor" stroke-dasharray="264" stroke-dashoffset="42" stroke-linecap="round" stroke-width="7"></circle>
+            </svg>
+            <div class="absolute flex flex-col items-center justify-center">
+              <span class="font-display text-3xl text-ocean-title font-bold">42</span>
+              <span class="text-[10px] text-ocean-muted uppercase font-bold">Days</span>
+            </div>
+          </div>
+          <h3 class="font-display text-xl text-ocean-title mt-3 font-bold">Santorini Dream Trip</h3>
+          <span class="text-xs text-ocean-seafoam font-bold mt-1">May 20, 2026 • 84% Ready</span>
+          <p class="text-xs text-ocean-body mt-2 leading-relaxed">White stone arches and Aegean sea salt at sunset.</p>
+        </div>
+        <!-- Dial 3 -->
+        <div class="p-6 rounded-3xl frosted-glass flex flex-col items-center text-center relative overflow-hidden group hover:scale-[1.01] transition-transform">
+          <div class="relative w-36 h-36 flex items-center justify-center my-2">
+            <svg class="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+              <circle class="text-white fill-transparent" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="7"></circle>
+              <circle class="text-ocean-light fill-transparent" cx="50" cy="50" r="42" stroke="currentColor" stroke-dasharray="264" stroke-dashoffset="13" stroke-linecap="round" stroke-width="7"></circle>
+            </svg>
+            <div class="absolute flex flex-col items-center justify-center">
+              <span class="font-display text-3xl text-ocean-title font-bold">02</span>
+              <span class="text-[10px] text-ocean-muted uppercase font-bold">Days</span>
+            </div>
+          </div>
+          <h3 class="font-display text-xl text-ocean-title mt-3 font-bold">Movie &amp; Pasta Night</h3>
+          <span class="text-xs text-ocean-main font-bold mt-1">This Friday • 95% Anticipation</span>
+          <p class="text-xs text-ocean-body mt-2 leading-relaxed">Truffle penne contest, warm tea, and cozy blankets.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 04: OUR STORY / RELATIONSHIP TIMELINE                          -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-5xl mx-auto" id="story">
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <span class="text-xs text-ocean-accent uppercase tracking-[0.25em] font-bold">Living Tapestry</span>
+        <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">Chronicles of Our Hearts</h2>
+        <p class="text-sm text-ocean-body mt-2">Every landmark that carved our paths together into stone.</p>
+      </div>
+
+      <!-- Timeline Spine -->
+      <div class="relative pl-6 md:pl-0">
+        <div class="absolute left-6 md:left-1/2 top-4 bottom-4 w-1 bg-gradient-to-b from-ocean-accent via-ocean-seafoam to-ocean-light -translate-x-1/2 rounded-full shadow-[0_0_10px_rgba(140,205,230,0.6)]"></div>
+
+        <!-- Milestone 1 -->
+        <div class="relative mb-16 flex flex-col md:flex-row items-center justify-between w-full">
+          <div class="absolute left-0 md:left-1/2 w-7 h-7 rounded-full bg-white -translate-x-1/2 flex items-center justify-center z-10 shadow-md border-2 border-ocean-accent">
+            <div class="w-3 h-3 rounded-full bg-ocean-accent animate-pulse"></div>
+          </div>
+          <div class="w-full md:w-[45%] ml-10 md:ml-0 md:pr-8 text-left md:text-right">
+            <div class="p-6 rounded-3xl frosted-glass hover:bg-white/90 transition-all">
+              <span class="text-xs text-ocean-accent uppercase font-bold">04.09.2026 • Seaside Pier at Dusk</span>
+              <h3 class="font-display text-xl text-ocean-title mt-1 font-bold">The Day It All Began</h3>
+              <p class="text-sm text-ocean-body mt-2 leading-relaxed">
+                When a random stroll and quiet sea breeze turned into finding my favorite human forever. We watched the lighthouses blink in unison.
+              </p>
+              <div class="mt-4 rounded-2xl overflow-hidden h-36 bg-white/70 border border-white">
+                <img class="w-full h-full object-cover" alt="Seaside Pier at Dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWp1b2qNdYQ8kRP0rn0oZj0a1nPRk6xmnRuNaahDHF7drkDwqr0owhxvfTuI4r1epWFfghRj2AoUEv2lKhFmhdW-yoeSL_YGY-wEKCkhbuiEaLPRTYfPBRtFpzI9X7o_h7cgeOSIwB5FeW7hk5a5-5GmNiiW8bqeHuEBVvIgxpBdq4Cmth5EbdrOWmbZs00v4OyGSZMeuNIeOVJ842n-X6_9-lfl8N_WQK6u59gHBJx9COwRv2ajQSeQ"/>
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:block w-[45%]"></div>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="relative mb-16 flex flex-col md:flex-row items-center justify-between w-full">
+          <div class="absolute left-0 md:left-1/2 w-7 h-7 rounded-full bg-white -translate-x-1/2 flex items-center justify-center z-10 shadow-md border-2 border-ocean-seafoam">
+            <div class="w-3 h-3 rounded-full bg-ocean-seafoam animate-pulse"></div>
+          </div>
+          <div class="hidden md:block w-[45%]"></div>
+          <div class="w-full md:w-[45%] ml-10 md:ml-0 md:pl-8 text-left">
+            <div class="p-6 rounded-3xl frosted-glass hover:bg-white/90 transition-all">
+              <span class="text-xs text-ocean-seafoam uppercase font-bold">12.11.2026 • Whispering Dunes</span>
+              <h3 class="font-display text-xl text-ocean-title mt-1 font-bold">Our First Road Trip &amp; Stargazing</h3>
+              <p class="text-sm text-ocean-body mt-2 leading-relaxed">
+                We took the wrong turn and ended up lost for two hours in the desert sands, yet neither of us cared because the radio was playing our tunes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 3 -->
+        <div class="relative flex flex-col md:flex-row items-center justify-between w-full">
+          <div class="absolute left-0 md:left-1/2 w-7 h-7 rounded-full bg-white -translate-x-1/2 flex items-center justify-center z-10 shadow-md border-2 border-ocean-accent">
+            <div class="w-3 h-3 rounded-full bg-ocean-accent animate-pulse"></div>
+          </div>
+          <div class="w-full md:w-[45%] ml-10 md:ml-0 md:pr-8 text-left md:text-right">
+            <div class="p-6 rounded-3xl frosted-glass hover:bg-white/90 transition-all">
+              <span class="text-xs text-ocean-accent uppercase font-bold">02.14.2027 • Old Town Bistro</span>
+              <h3 class="font-display text-xl text-ocean-title mt-1 font-bold">Midnight Promise in the Rain</h3>
+              <p class="text-sm text-ocean-body mt-2 leading-relaxed">
+                Sharing one drenched overcoat under the cafe awning, hot coffee cups steaming, laughing hysterically until 3 AM without a care in the world.
+              </p>
+            </div>
+          </div>
+          <div class="hidden md:block w-[45%]"></div>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-12">
+        <button class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/85 hover:bg-white text-ocean-title text-sm font-bold shadow-sm border border-white" type="button">
+          <span class="material-symbols-outlined text-ocean-accent">add_circle</span>
+          Add New Milestone
+        </button>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 05: MEMORIES SCRAPBOOK WALL & POLAROIDS                        -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-7xl mx-auto" id="memories">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs text-ocean-accent uppercase tracking-widest font-bold">Sanctuary Relics</span>
+          <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">Memories Scrapbook Wall</h2>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex bg-white/70 border border-white p-1 rounded-full shadow-sm">
+            <button class="px-4 py-1.5 rounded-full bg-[#8CCDE6] text-ocean-title text-xs font-bold" type="button">Curated Gallery</button>
+            <button class="px-4 py-1.5 rounded-full text-ocean-body hover:text-ocean-title text-xs font-semibold" type="button">Polaroid Wall</button>
+          </div>
+          <button class="p-2.5 rounded-full bg-white/80 border border-white text-ocean-accent hover:bg-white shadow-sm" type="button">
+            <span class="material-symbols-outlined text-[20px]">file_upload</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Polaroid 1 -->
+        <div class="group p-4 bg-white/95 rounded-xl shadow-lg transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 relative cursor-pointer border border-white">
+          <div class="w-12 h-3.5 bg-white/80 shadow-sm rounded-sm absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none"></div>
+          <div class="w-full aspect-square overflow-hidden rounded-lg bg-[#DDF5FF] mb-3">
+            <img class="w-full h-full object-cover group-hover:brightness-105 transition-all" alt="Coffee spills & morning smiles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXgk7boeaxGqtRHkE0N7A558HYaWa7_TvmhqpgGp4p0Zh0GOpKMwJaybZFALSzeM2TpBb7Si5OVJoeDC4OkhnO1npO2MEpo_P3hW2tHAJcDjnwzU2wSx4s_-zIh_F2qC578fXJCu_9D7oglkYpddtvDT5soa6NeCC4dUp_68k9_RZUzo7OFOmAMEOJ57NPC_C66gNUejyrWbBIzISNrA4BaGTqshLqMYewLI2PKrSsXvvVM8Ay-h6tRA"/>
+          </div>
+          <div class="text-center pt-1">
+            <p class="font-display italic text-sm text-ocean-title font-medium">“Coffee spills &amp; morning smiles”</p>
+            <span class="text-[10px] text-ocean-accent mt-1 block font-bold">05.10.2026 • Sunny Loft</span>
+          </div>
+        </div>
+        <!-- Polaroid 2 -->
+        <div class="group p-4 bg-white/95 rounded-xl shadow-lg transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 relative cursor-pointer border border-white">
+          <div class="w-12 h-3.5 bg-white/80 shadow-sm rounded-sm absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none"></div>
+          <div class="w-full aspect-square overflow-hidden rounded-lg bg-[#DDF5FF] mb-3">
+            <img class="w-full h-full object-cover group-hover:brightness-105 transition-all" alt="That quiet night on the balcony" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvEj4zQbkQOgSeMWCCpinubobnXrPc_BjdZq3zLysMoH49gVpLPrJ5oiLl8AtG0en2Np3y_cU-_Fhgs0KXv3ubr3VlXUpC-IFbevyqiFFhnr4z7okv6S9WscZRi1Y22XNo0pbYK0_80GXsj2V7R57WqobXpw1r7jmU4v_AyxJmStyB-8ZtKv1hlHaNQjEsC-5Y84cOfrBJ0LVgVoNOx_e8g8r7bkDfQCyo3at0VloPyHCqDs0YvMoWPQ"/>
+          </div>
+          <div class="text-center pt-1">
+            <p class="font-display italic text-sm text-ocean-title font-medium">“That quiet night on the balcony”</p>
+            <span class="text-[10px] text-ocean-seafoam mt-1 block font-bold">08.22.2026 • Midnight Tide</span>
+          </div>
+        </div>
+        <!-- Polaroid 3 -->
+        <div class="group p-4 bg-white/95 rounded-xl shadow-lg transform -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 relative cursor-pointer border border-white">
+          <div class="w-12 h-3.5 bg-white/80 shadow-sm rounded-sm absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none"></div>
+          <div class="w-full aspect-square overflow-hidden rounded-lg bg-[#DDF5FF] mb-3">
+            <img class="w-full h-full object-cover group-hover:brightness-105 transition-all" alt="You laughing at my silly jokes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClC02xr4DJRwuGDufTyvAkLdwS9e6_IeNeUyAb9VyYwB8qdK1Zdoaix82Rb2qwdF1vhhpbdZcrgbWEw_3w3IStUSF0EHAl9x2UurI4TuYegFWI3rNaBzeAgsvlWAcijjt_IIs5zuo-F72BNqQHjsAqSSwkAuD0TQulq-O2NuGpfRt6TxuL-XocWLa-pxTSk6JTQ1v1vrylu7-Exf2LDk2NnnzvASCto0tok5U31LasX7z3TWxIVixpgw"/>
+          </div>
+          <div class="text-center pt-1">
+            <p class="font-display italic text-sm text-ocean-title font-medium">“You laughing at my silly jokes”</p>
+            <span class="text-[10px] text-ocean-body mt-1 block font-bold">11.04.2026 • Pasta Parlor</span>
+          </div>
+        </div>
+        <!-- Polaroid 4 -->
+        <div class="group p-4 bg-white/95 rounded-xl shadow-lg transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300 relative cursor-pointer border border-white">
+          <div class="w-12 h-3.5 bg-white/80 shadow-sm rounded-sm absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none"></div>
+          <div class="w-full aspect-square overflow-hidden rounded-lg bg-[#DDF5FF] mb-3">
+            <img class="w-full h-full object-cover group-hover:brightness-105 transition-all" alt="First snow of December" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr_x3v6J5zPx332dyKpikXpPZCRUtZYLyFhP0Esnx8XBtbfzTFA-TU6M3_OcUcNG3b0oddy9WHQz6SgwFHAsONRX4XRVl2cRhBYddBB_d7lM2Purr-eyixT2XFgoFvVgs4LWnYy9ubJl91LDNcGgxGVCSTj4a30YV7Uz91zB-il3qJldn1-HNF9iup3ow0kSp9jcqR9G4pvGfpPEdI7hEoAxRoqASRZ1Kh9oY4Z7LxEpHJMZBHGZ1O8g"/>
+          </div>
+          <div class="text-center pt-1">
+            <p class="font-display italic text-sm text-ocean-title font-medium">“First snow of December”</p>
+            <span class="text-[10px] text-ocean-accent mt-1 block font-bold">12.18.2026 • Winter Shore</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 06: SOUNDTRACK & SQUIDWARD'S MUSIC STUDIO                      -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-7xl mx-auto" id="soundtrack">
+      <div class="p-8 md:p-12 rounded-3xl frosted-glass relative overflow-hidden border border-white">
+        <div class="flex flex-col lg:flex-row items-center gap-10 relative z-10">
+          <!-- Spinning Pearlescent Vinyl -->
+          <div class="flex flex-col items-center gap-4 shrink-0">
+            <div class="relative w-52 h-52 md:w-56 md:h-56 flex items-center justify-center">
+              <div class="w-full h-full rounded-full bg-gradient-to-tr from-white via-[#EAF8FF] to-[#CDE9F5] shadow-xl flex items-center justify-center animate-[spin_20s_linear_infinite] ring-4 ring-white border border-white">
+                <div class="w-4/5 h-4/5 rounded-full border border-ocean-muted/20 flex items-center justify-center">
+                  <div class="w-3/5 h-3/5 rounded-full border border-ocean-muted/30 flex items-center justify-center">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-ocean-accent to-ocean-seafoam flex flex-col items-center justify-center text-center p-2 text-white shadow-md">
+                      <span class="font-display text-[10px] font-bold">3zab ♡ Nouna</span>
+                      <span class="text-[7px] uppercase tracking-widest">Side A</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute bottom-2 right-2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-ocean-accent border border-white" title="Squidward's Clarinet">
+                <span class="material-symbols-outlined text-[20px]">music_note</span>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="text-xs text-ocean-accent tracking-widest uppercase font-bold">Squidward's Music Studio</span>
+              <p class="text-xs text-ocean-body mt-1">Discerning acoustic curation for lovers in sunny waters.</p>
+            </div>
+          </div>
+
+          <!-- Controls & Tracklist -->
+          <div class="w-full flex flex-col justify-between">
+            <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 gap-2">
+              <div>
+                <span class="text-xs text-ocean-accent tracking-widest uppercase font-bold">Currently Resonating</span>
+                <h3 class="font-display text-2xl md:text-3xl text-ocean-title mt-1 font-bold">Clair de Lune (Clarinet Nocturne)</h3>
+                <p class="text-sm text-ocean-body">Claude Debussy &amp; The Bikini Bottom Chamber Orchestra</p>
+              </div>
+              <button class="self-start md:self-auto px-4 py-2 rounded-full bg-white/80 text-ocean-accent text-xs font-bold border border-white shadow-sm flex items-center gap-1.5" type="button">
+                <span class="material-symbols-outlined text-[16px]">library_add</span>
+                + Add Song
+              </button>
+            </div>
+
+            <!-- Waveform & Progress -->
+            <div class="w-full h-10 flex items-end gap-1.5 my-2">
+              <span class="flex-1 bg-ocean-light rounded-full h-4 animate-[eq-wave_1.1s_ease-in-out_infinite]"></span>
+              <span class="flex-1 bg-ocean-accent rounded-full h-8 animate-[eq-wave_0.7s_ease-in-out_infinite_0.1s]"></span>
+              <span class="flex-1 bg-ocean-title rounded-full h-10 animate-[eq-wave_1.3s_ease-in-out_infinite_0.3s]"></span>
+              <span class="flex-1 bg-ocean-seafoam rounded-full h-6 animate-[eq-wave_0.9s_ease-in-out_infinite_0.2s]"></span>
+              <span class="flex-1 bg-ocean-accent rounded-full h-9 animate-[eq-wave_1s_ease-in-out_infinite_0.4s]"></span>
+              <span class="flex-1 bg-ocean-light rounded-full h-5 animate-[eq-wave_0.8s_ease-in-out_infinite_0.2s]"></span>
+              <span class="flex-1 bg-ocean-seafoam rounded-full h-10 animate-[eq-wave_1.2s_ease-in-out_infinite_0.5s]"></span>
+              <span class="flex-1 bg-ocean-body rounded-full h-7 animate-[eq-wave_0.6s_ease-in-out_infinite_0.1s]"></span>
+            </div>
+
+            <div class="w-full flex items-center gap-3 my-2">
+              <span class="text-xs text-ocean-muted font-bold">02:14</span>
+              <div class="flex-1 h-2 rounded-full bg-white/80 relative cursor-pointer border border-white">
+                <div class="h-full w-2/5 rounded-full bg-ocean-accent"></div>
+              </div>
+              <span class="text-xs text-ocean-muted font-bold">05:03</span>
+            </div>
+
+            <!-- Player Buttons -->
+            <div class="flex items-center justify-between mt-3">
+              <div class="flex items-center gap-4">
+                <button class="text-ocean-body hover:text-ocean-title" type="button"><span class="material-symbols-outlined text-[24px]">shuffle</span></button>
+                <button class="text-ocean-body hover:text-ocean-title" type="button"><span class="material-symbols-outlined text-[28px]">skip_previous</span></button>
+                <button class="w-12 h-12 rounded-full bg-ocean-accent text-white flex items-center justify-center hover:scale-105 shadow-md transition-transform" type="button">
+                  <span class="material-symbols-outlined text-[28px]">pause</span>
+                </button>
+                <button class="text-ocean-body hover:text-ocean-title" type="button"><span class="material-symbols-outlined text-[28px]">skip_next</span></button>
+                <button class="text-ocean-body hover:text-ocean-title" type="button"><span class="material-symbols-outlined text-[24px]">repeat</span></button>
+              </div>
+              <div class="hidden md:flex items-center gap-2">
+                <span class="material-symbols-outlined text-[20px] text-ocean-muted">volume_up</span>
+                <div class="w-24 h-1.5 rounded-full bg-white/80 border border-white">
+                  <div class="w-3/4 h-full rounded-full bg-ocean-accent"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 07: WHY I LOVE YOU                                             -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-7xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs text-ocean-seafoam uppercase tracking-[0.25em] font-bold">Eternal Truths</span>
+        <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">Why I Love You</h2>
+        <p class="text-sm text-ocean-body mt-2">The delicate details that anchor my soul to yours forever.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-8 rounded-3xl frosted-glass flex flex-col justify-between hover:bg-white/90 transition-all">
+          <div>
+            <span class="font-display text-4xl text-ocean-accent/30 font-bold">01</span>
+            <h3 class="font-display text-xl text-ocean-title mt-2 font-bold">The Quiet Calmer</h3>
+            <p class="text-sm text-ocean-body mt-3 leading-relaxed">
+              The way your voice instantly softens the loudest noise in my head, turning stormy thoughts into warm stillness.
+            </p>
+          </div>
+          <span class="mt-6 pt-4 border-t border-white/60 text-ocean-accent text-xs uppercase font-bold tracking-wider">Heartfelt Constant</span>
+        </div>
+        <div class="p-8 rounded-3xl frosted-glass flex flex-col justify-between hover:bg-white/90 transition-all">
+          <div>
+            <span class="font-display text-4xl text-ocean-seafoam/40 font-bold">02</span>
+            <h3 class="font-display text-xl text-ocean-title mt-2 font-bold">Fierce Kindness</h3>
+            <p class="text-sm text-ocean-body mt-3 leading-relaxed">
+              How genuinely and unconditionally gentle you are with everyone, especially when you think nobody is paying attention.
+            </p>
+          </div>
+          <span class="mt-6 pt-4 border-t border-white/60 text-ocean-seafoam text-xs uppercase font-bold tracking-wider">Pure Radiance</span>
+        </div>
+        <div class="p-8 rounded-3xl frosted-glass flex flex-col justify-between hover:bg-white/90 transition-all">
+          <div>
+            <span class="font-display text-4xl text-ocean-body/30 font-bold">03</span>
+            <h3 class="font-display text-xl text-ocean-title mt-2 font-bold">Spontaneous Joy</h3>
+            <p class="text-sm text-ocean-body mt-3 leading-relaxed">
+              Your laughter that breaks out before you even get to the punchline of a joke, making me smile before I even know why.
+            </p>
+          </div>
+          <span class="mt-6 pt-4 border-t border-white/60 text-ocean-body text-xs uppercase font-bold tracking-wider">Endless Spark</span>
+        </div>
+        <div class="p-8 rounded-3xl frosted-glass flex flex-col justify-between hover:bg-white/90 transition-all">
+          <div>
+            <span class="font-display text-4xl text-ocean-light/50 font-bold">04</span>
+            <h3 class="font-display text-xl text-ocean-title mt-2 font-bold">Sacred Stillness</h3>
+            <p class="text-sm text-ocean-body mt-3 leading-relaxed">
+              The quiet, unquestioning safety of just sitting in silence beside you, knowing that wherever you are is my home.
+            </p>
+          </div>
+          <span class="mt-6 pt-4 border-t border-white/60 text-ocean-accent text-xs uppercase font-bold tracking-wider">Our Sanctuary</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 08: THE SUBMERGED LETTERS                                      -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-7xl mx-auto" id="letters">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs text-ocean-accent uppercase tracking-widest font-bold">Secret Archive</span>
+          <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">The Submerged Letters</h2>
+        </div>
+        <button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ocean-accent text-white text-sm font-bold shadow-sm hover:bg-ocean-title transition-colors" type="button">
+          <span class="material-symbols-outlined text-[18px]">draw</span>
+          + Compose Letter
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Letter 1 -->
+        <div class="p-7 rounded-3xl frosted-glass flex flex-col justify-between hover:bg-white/90 transition-all border border-white">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs text-ocean-accent uppercase font-bold">From: 3zab ♡ Nouna</span>
+              <span class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-ocean-accent border border-white">
+                <span class="material-symbols-outlined text-[16px]">mail</span>
+              </span>
+            </div>
+            <h3 class="font-display text-xl text-ocean-title font-bold">To my forever sanctuary on a stormy Tuesday</h3>
+            <p class="text-xs text-ocean-body mt-2 line-clamp-3 leading-relaxed">
+              I wrote this sitting at the station watching cold drops streak across the glass. In that exact rush of commuters, your face was the only quiet reality in my world...
+            </p>
+          </div>
+          <div class="mt-6 flex items-center justify-between pt-4 bg-white/70 px-3.5 py-2 rounded-2xl border border-white">
+            <span class="text-xs text-ocean-muted font-bold">Unsealed Nov 2026</span>
+            <button class="text-ocean-accent hover:text-ocean-title text-xs uppercase font-bold tracking-wider flex items-center gap-1" type="button">
+              Read Letter <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+        <!-- Letter 2 -->
+        <div class="p-7 rounded-3xl frosted-glass flex flex-col justify-between hover:bg-white/90 transition-all border border-white">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs text-ocean-seafoam uppercase font-bold">From: Nouna ♡ 3zab</span>
+              <span class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-ocean-seafoam border border-white">
+                <span class="material-symbols-outlined text-[16px]">mail</span>
+              </span>
+            </div>
+            <h3 class="font-display text-xl text-ocean-title font-bold">Read this when you doubt your brilliance</h3>
+            <p class="text-xs text-ocean-body mt-2 line-clamp-3 leading-relaxed">
+              You work with such unwavering devotion. Even when the world feels too demanding, remember how deeply I admire the sheer grace in your heart...
+            </p>
+          </div>
+          <div class="mt-6 flex items-center justify-between pt-4 bg-white/70 px-3.5 py-2 rounded-2xl border border-white">
+            <span class="text-xs text-ocean-muted font-bold">Unsealed Jan 2027</span>
+            <button class="text-ocean-seafoam hover:text-ocean-title text-xs uppercase font-bold tracking-wider flex items-center gap-1" type="button">
+              Read Letter <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+        <!-- Letter 3 -->
+        <div class="p-7 rounded-3xl frosted-glass flex flex-col justify-between hover:bg-white/90 transition-all border border-white">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs text-ocean-body uppercase font-bold">Epistolary Enigma</span>
+              <div class="w-8 h-8 rounded-full bg-[#8CCDE6]/30 shadow-inner flex items-center justify-center text-ocean-accent border border-white">
+                <span class="material-symbols-outlined text-[16px]">lock</span>
+              </div>
+            </div>
+            <h3 class="font-display text-xl text-ocean-title font-bold">The letter written at 4:18 AM</h3>
+            <p class="text-xs text-ocean-body mt-2 italic leading-relaxed">
+              This letter is locked beneath oceanic wax seal until our next milestone. Touch seal to inspect.
+            </p>
+          </div>
+          <div class="mt-6 flex items-center justify-between pt-4 bg-white/70 px-3.5 py-2 rounded-2xl border border-white">
+            <span class="text-xs text-ocean-muted font-bold">Sealed with Deep Love</span>
+            <button class="text-ocean-accent hover:text-ocean-title text-xs uppercase font-bold tracking-wider flex items-center gap-1" type="button">
+              Touch Seal <span class="material-symbols-outlined text-[14px]">lock_open</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 09: OPEN WHEN ENVELOPES                                        -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-7xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs text-ocean-seafoam uppercase tracking-[0.25em] font-bold">Emotional Vault</span>
+        <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">Open When...</h2>
+        <p class="text-sm text-ocean-body mt-2">Emergency remedies and affectionate medicine for every weather of the heart.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 rounded-3xl frosted-glass flex flex-col items-center text-center justify-between hover:scale-[1.02] hover:bg-white/95 transition-all cursor-pointer">
+          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-ocean-accent my-3 border border-white">
+            <span class="material-symbols-outlined text-[32px]">favorite_border</span>
+          </div>
+          <div class="my-2">
+            <h3 class="font-display text-lg text-ocean-title font-bold">Open When You Miss Me</h3>
+            <p class="text-xs text-ocean-body mt-2">Contains a recorded ocean voice memo and 10 reasons you are in my heart right now.</p>
+          </div>
+          <span class="mt-4 px-4 py-1.5 rounded-full bg-[#8CCDE6]/40 text-ocean-title text-xs uppercase tracking-wider font-bold">Unseal Now</span>
+        </div>
+        <div class="p-6 rounded-3xl frosted-glass flex flex-col items-center text-center justify-between hover:scale-[1.02] hover:bg-white/95 transition-all cursor-pointer">
+          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-ocean-seafoam my-3 border border-white">
+            <span class="material-symbols-outlined text-[32px]">wb_sunny</span>
+          </div>
+          <div class="my-2">
+            <h3 class="font-display text-lg text-ocean-title font-bold">Open When Having a Tough Day</h3>
+            <p class="text-xs text-ocean-body mt-2">Emergency encouragement pill: reminder of your superpower and warm hugs.</p>
+          </div>
+          <span class="mt-4 px-4 py-1.5 rounded-full bg-ocean-seafoam/25 text-ocean-title text-xs uppercase tracking-wider font-bold">Unseal Now</span>
+        </div>
+        <div class="p-6 rounded-3xl frosted-glass flex flex-col items-center text-center justify-between hover:scale-[1.02] hover:bg-white/95 transition-all cursor-pointer">
+          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-ocean-body my-3 border border-white">
+            <span class="material-symbols-outlined text-[32px]">handshake</span>
+          </div>
+          <div class="my-2">
+            <h3 class="font-display text-lg text-ocean-title font-bold">Open When We Disagree</h3>
+            <p class="text-xs text-ocean-body mt-2">A reminder that it is always 3zab + Nouna vs the problem, never vs each other.</p>
+          </div>
+          <span class="mt-4 px-4 py-1.5 rounded-full bg-[#DDF5FF] text-ocean-title text-xs uppercase tracking-wider font-bold border border-white">Unseal Now</span>
+        </div>
+        <div class="p-6 rounded-3xl frosted-glass flex flex-col items-center text-center justify-between hover:scale-[1.02] hover:bg-white/95 transition-all cursor-pointer">
+          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-ocean-accent my-3 border border-white">
+            <span class="material-symbols-outlined text-[32px]">bedtime</span>
+          </div>
+          <div class="my-2">
+            <h3 class="font-display text-lg text-ocean-title font-bold">Open When You Can't Sleep</h3>
+            <p class="text-xs text-ocean-body mt-2">Calming abyssal bedtime story and a guided visualization of floating safely.</p>
+          </div>
+          <span class="mt-4 px-4 py-1.5 rounded-full bg-[#8CCDE6]/40 text-ocean-title text-xs uppercase tracking-wider font-bold">Unseal Now</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 10: 21 THINGS                                                  -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-7xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs text-ocean-accent uppercase tracking-[0.25em] font-bold">Micro-Monuments</span>
+        <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">21 Pieces of Our Universe</h2>
+        <p class="text-sm text-ocean-body mt-2">A mosaic of tiny inside jokes, sacred rituals, and priceless fragments.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-accent font-bold">01</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Late night ramen runs in oversized hoodies</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-seafoam font-bold">02</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Sharing earphones on the slow train</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-body font-bold">03</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Inside jokes nobody else gets</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-accent font-bold">04</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">The secret playlist we build track by track</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-seafoam font-bold">05</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Your sleepy morning raspy voice</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-body font-bold">06</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Squidward meme reactions at 2:00 AM</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-accent font-bold">07</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Forehead kisses before parting ways</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-seafoam font-bold">08</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Predicting what the other will order</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-body font-bold">09</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Stealing fries when pretending you don't want any</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-accent font-bold">10</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">The scent of petrichor and fresh cedarwood</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-seafoam font-bold">11</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Holding hands across the center console</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-body font-bold">12</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Our shared imaginary pet cat Gary</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-accent font-bold">13</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Counting shooting stars from the car roof</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-seafoam font-bold">14</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Unplanned matching outfit days</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-body font-bold">15</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Speaking solely in glances in public rooms</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-accent font-bold">16</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Our competitive grocery cart drifting</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-seafoam font-bold">17</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Hot tea brewed exactly at the right minute</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-body font-bold">18</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Falling asleep during opening credits</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-accent font-bold">19</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">The way you defend me without hesitation</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all">
+          <span class="text-xs text-ocean-seafoam font-bold">20</span>
+          <p class="text-xs text-ocean-title mt-2 font-medium">Our quiet vows made without any fanfare</p>
+        </div>
+        <div class="p-4 rounded-2xl frosted-glass flex flex-col justify-between hover:bg-white/95 transition-all col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-1">
+          <span class="text-xs text-ocean-accent font-bold">21</span>
+          <p class="text-xs text-ocean-accent mt-2 font-bold">Building this digital universe forever ∞</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 11: OUR FAVORITE THINGS                                        -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs text-ocean-seafoam uppercase tracking-widest font-bold">Resonant Polarities</span>
+          <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">Our Favorite Things</h2>
+        </div>
+        <button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/80 hover:bg-white text-ocean-accent text-sm font-bold shadow-sm border border-white transition-all" type="button">
+          <span class="material-symbols-outlined text-[18px]">add_task</span>
+          + Add Favorite
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- 3zab's Vault -->
+        <div class="p-8 rounded-3xl frosted-glass flex flex-col gap-6">
+          <div class="flex items-center gap-3 border-b border-[#8CCDE6]/30 pb-4">
+            <div class="w-10 h-10 rounded-2xl bg-white shadow-sm flex items-center justify-center text-ocean-accent font-display text-xl font-bold border border-white">3</div>
+            <div>
+              <h3 class="font-display text-xl text-ocean-title font-bold">3zab's Vault</h3>
+              <span class="text-xs text-ocean-accent tracking-widest uppercase font-bold">Curated Preferences</span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="p-4 rounded-2xl bg-white/70 flex items-center justify-between border border-white shadow-sm">
+              <span class="text-xs text-ocean-body font-semibold">Favorite Dish</span>
+              <span class="text-sm text-ocean-title font-bold">Nouna's Homemade Truffle Pasta</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/70 flex items-center justify-between border border-white shadow-sm">
+              <span class="text-xs text-ocean-body font-semibold">Favorite Memory</span>
+              <span class="text-sm text-ocean-title font-bold">The Pier Sunset under violet clouds</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/70 flex items-center justify-between border border-white shadow-sm">
+              <span class="text-xs text-ocean-body font-semibold">Favorite Song</span>
+              <span class="text-sm text-ocean-title font-bold">Sea of Love (Cat Power)</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/70 flex items-center justify-between border border-white shadow-sm">
+              <span class="text-xs text-ocean-body font-semibold">Favorite Scent</span>
+              <span class="text-sm text-ocean-title font-bold">Petrichor &amp; rain on cedarwood</span>
+            </div>
+          </div>
+        </div>
+        <!-- Nouna's Vault -->
+        <div class="p-8 rounded-3xl frosted-glass flex flex-col gap-6">
+          <div class="flex items-center gap-3 border-b border-[#8CCDE6]/30 pb-4">
+            <div class="w-10 h-10 rounded-2xl bg-white shadow-sm flex items-center justify-center text-ocean-seafoam font-display text-xl font-bold border border-white">N</div>
+            <div>
+              <h3 class="font-display text-xl text-ocean-title font-bold">Nouna's Vault</h3>
+              <span class="text-xs text-ocean-seafoam tracking-widest uppercase font-bold">Curated Preferences</span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="p-4 rounded-2xl bg-white/70 flex items-center justify-between border border-white shadow-sm">
+              <span class="text-xs text-ocean-body font-semibold">Favorite Habit</span>
+              <span class="text-sm text-ocean-title font-bold">Unannounced forehead kisses</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/70 flex items-center justify-between border border-white shadow-sm">
+              <span class="text-xs text-ocean-body font-semibold">Favorite Trip</span>
+              <span class="text-sm text-ocean-title font-bold">The Mountain Cabin by the creek</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/70 flex items-center justify-between border border-white shadow-sm">
+              <span class="text-xs text-ocean-body font-semibold">Favorite Drink</span>
+              <span class="text-sm text-ocean-title font-bold">Iced Oat Matcha with double honey</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/70 flex items-center justify-between border border-white shadow-sm">
+              <span class="text-xs text-ocean-body font-semibold">Favorite Quote</span>
+              <span class="text-sm text-ocean-title font-bold">“You are my home.”</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 12: OUR FUTURE & SHARED DREAMS                                 -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-7xl mx-auto" id="dreams">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs text-ocean-accent uppercase tracking-widest font-bold">Future Cartography</span>
+          <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">Our Shared Dreams</h2>
+        </div>
+        <button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/80 hover:bg-white text-ocean-accent text-sm font-bold shadow-sm border border-white transition-all" type="button">
+          <span class="material-symbols-outlined text-[18px]">add_circle_outline</span>
+          + Add Dream
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 rounded-3xl frosted-glass flex flex-col justify-between border-l-4 border-l-ocean-accent">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-0.5 rounded-full bg-ocean-accent/20 text-ocean-accent text-[11px] uppercase font-bold">Completed</span>
+              <span class="material-symbols-outlined text-ocean-accent text-[20px]">check_circle</span>
+            </div>
+            <h3 class="font-display text-lg text-ocean-title font-bold">Build our private sanctuary website</h3>
+            <p class="text-xs text-ocean-body mt-2 leading-relaxed">A luxurious digital sanctuary celebrating our love with sunny lagoon serenity.</p>
+          </div>
+          <span class="mt-6 text-[11px] text-ocean-accent font-bold">Target Met • Est. 04.09.2026</span>
+        </div>
+        <div class="p-6 rounded-3xl frosted-glass flex flex-col justify-between border-l-4 border-l-ocean-seafoam">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-0.5 rounded-full bg-ocean-seafoam/20 text-ocean-title text-[11px] uppercase font-bold">In Progress (75%)</span>
+              <span class="material-symbols-outlined text-ocean-seafoam text-[20px]">pending</span>
+            </div>
+            <h3 class="font-display text-lg text-ocean-title font-bold">Adopt a gentle rescue cat and name him Gary</h3>
+            <p class="text-xs text-ocean-body mt-2 leading-relaxed">Find a tuxedo or grey tabby rescue who will purr softly as we read together.</p>
+          </div>
+          <div class="mt-6">
+            <div class="w-full h-2 rounded-full bg-white border border-white">
+              <div class="w-3/4 h-full rounded-full bg-ocean-seafoam"></div>
+            </div>
+            <span class="text-[11px] text-ocean-title mt-1.5 block font-bold">Shelter tour scheduled</span>
+          </div>
+        </div>
+        <div class="p-6 rounded-3xl frosted-glass flex flex-col justify-between border-l-4 border-l-ocean-body">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-0.5 rounded-full bg-[#DDF5FF] text-ocean-body text-[11px] uppercase font-bold border border-white">Upcoming</span>
+              <span class="material-symbols-outlined text-ocean-body text-[20px]">flight_takeoff</span>
+            </div>
+            <h3 class="font-display text-lg text-ocean-title font-bold">Watch the Northern Lights in Norway</h3>
+            <p class="text-xs text-ocean-body mt-2 leading-relaxed">Spend three nights in a warm glass igloo gazing at green aurora waves.</p>
+          </div>
+          <span class="mt-6 text-[11px] text-ocean-muted font-bold">Winter 2027 Objective</span>
+        </div>
+        <div class="p-6 rounded-3xl frosted-glass flex flex-col justify-between border-l-4 border-l-ocean-light">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-0.5 rounded-full bg-[#8CCDE6]/30 text-ocean-title text-[11px] uppercase font-bold">Upcoming</span>
+              <span class="material-symbols-outlined text-ocean-title text-[20px]">deck</span>
+            </div>
+            <h3 class="font-display text-lg text-ocean-title font-bold">Furnish our sea-facing balcony with fairy lights</h3>
+            <p class="text-xs text-ocean-body mt-2 leading-relaxed">Low teak chairs, climbing jasmine, warm glowing bulbs, and ocean breezes.</p>
+          </div>
+          <span class="mt-6 text-[11px] text-ocean-muted font-bold">Summer 2026 Objective</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 13: OUR PRIVATE CHAT                                           -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-4xl mx-auto" id="chat">
+      <div class="text-center max-w-xl mx-auto mb-8">
+        <span class="text-xs text-ocean-accent uppercase tracking-[0.25em] font-bold">Encrypted Channel</span>
+        <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">Our Abyssal Chatter</h2>
+        <p class="text-sm text-ocean-body mt-2">Whispers, check-ins, and late night tenderness in real-time.</p>
+      </div>
+      <div class="rounded-3xl frosted-glass overflow-hidden flex flex-col shadow-xl border border-white">
+        <div class="p-5 bg-white/70 border-b border-white flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="relative">
+              <div class="w-10 h-10 rounded-2xl bg-white shadow-sm flex items-center justify-center text-ocean-accent font-display text-lg font-bold border border-white">♡</div>
+              <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-ocean-accent ring-2 ring-white"></span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-display text-base text-ocean-title font-bold">3zab ♡ Nouna</span>
+              <span class="text-xs text-ocean-accent uppercase font-bold">Active together in the Sanctuary</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-ocean-body">
+            <button class="p-2 rounded-full hover:bg-white/80" type="button"><span class="material-symbols-outlined text-[20px]">phone</span></button>
+            <button class="p-2 rounded-full hover:bg-white/80" type="button"><span class="material-symbols-outlined text-[20px]">videocam</span></button>
+            <button class="p-2 rounded-full hover:bg-white/80" type="button"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+          </div>
+        </div>
+        <div class="p-6 md:p-8 flex flex-col gap-4 max-h-[380px] overflow-y-auto">
+          <div class="flex flex-col items-start max-w-[80%]">
+            <div class="px-4 py-3 rounded-2xl rounded-tl-sm bg-white/95 shadow-sm border border-white text-ocean-title text-sm">
+              Did you remember to drink water today, my love? 🌊
+            </div>
+            <span class="text-[10px] text-ocean-muted mt-1 pl-1 font-semibold">3zab • 03:42 PM</span>
+          </div>
+          <div class="flex flex-col items-end max-w-[80%] self-end">
+            <div class="px-4 py-3 rounded-2xl rounded-tr-sm bg-[#8CCDE6]/90 text-ocean-title text-sm font-semibold shadow-sm border border-white">
+              Yes! And I listened to our Clair de Lune playlist twice already while finishing my tasks. 🫧
+            </div>
+            <span class="text-[10px] text-ocean-muted mt-1 pr-1 font-semibold">Nouna • 03:45 PM</span>
+          </div>
+          <div class="flex flex-col items-start max-w-[80%]">
+            <div class="px-4 py-3 rounded-2xl rounded-tl-sm bg-white/95 shadow-sm border border-white text-ocean-title text-sm">
+              Proud of you. Now hurry back home, we have a quiet starry evening planned on the balcony. ✨
+            </div>
+            <span class="text-[10px] text-ocean-muted mt-1 pl-1 font-semibold">3zab • 03:46 PM</span>
+          </div>
+          <div class="flex flex-col items-end max-w-[80%] self-end">
+            <div class="px-4 py-3 rounded-2xl rounded-tr-sm bg-[#8CCDE6]/90 text-ocean-title text-sm font-semibold shadow-sm border border-white">
+              Packing my things now! Bring the blanket and make warm mint tea? 🍵♡
+            </div>
+            <span class="text-[10px] text-ocean-muted mt-1 pr-1 font-semibold">Nouna • 03:48 PM</span>
+          </div>
+        </div>
+        <div class="p-4 bg-white/70 border-t border-white flex items-center gap-3">
+          <button class="p-2 text-ocean-muted hover:text-ocean-accent" type="button"><span class="material-symbols-outlined text-[20px]">add_photo_alternate</span></button>
+          <input class="flex-1 px-4 py-2.5 rounded-full bg-white border border-[#8CCDE6]/40 text-ocean-title placeholder:text-ocean-muted/60 text-xs outline-none focus:ring-2 focus:ring-ocean-accent" placeholder="Type a message to your person..." type="text"/>
+          <button class="w-10 h-10 rounded-full bg-ocean-accent text-white flex items-center justify-center hover:scale-105 shadow-sm transition-transform" type="button">
+            <span class="material-symbols-outlined text-[20px]">send</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 14: PEACE ROOM (Reconciliation Haven)                           -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-4xl mx-auto text-center" id="peace-room">
+      <div class="p-8 md:p-14 rounded-3xl frosted-glass relative overflow-hidden flex flex-col items-center border border-white">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-white text-ocean-accent mb-6 shadow-sm">
+          <span class="material-symbols-outlined text-[18px]">verified_user</span>
+          <span class="text-xs uppercase tracking-widest font-bold">Safe Space Active • Zero Judgement</span>
+        </div>
+        <h2 class="font-display text-3xl md:text-4xl text-ocean-title font-bold">The Peace Room</h2>
+        <p class="font-display italic text-lg md:text-xl text-ocean-seafoam font-light mt-1">“Where love comes before pride, and peace comes before victory.”</p>
+        <p class="text-sm text-ocean-body max-w-xl mt-3 leading-relaxed">
+          When the waters feel choppy, we pause here. No arguments are won; only hearts are heard and reconciled.
+        </p>
+
+        <div class="w-full mt-10 flex flex-col gap-5 text-left">
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs text-ocean-accent uppercase font-bold">1. What happened?</label>
+            <input class="w-full p-3.5 rounded-2xl bg-white border border-[#8CCDE6]/40 text-ocean-title placeholder:text-ocean-muted/60 text-xs outline-none focus:ring-2 focus:ring-ocean-accent shadow-sm" placeholder="State the situation with factual calm..." type="text"/>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs text-ocean-seafoam uppercase font-bold">2. How I felt:</label>
+            <input class="w-full p-3.5 rounded-2xl bg-white border border-[#8CCDE6]/40 text-ocean-title placeholder:text-ocean-muted/60 text-xs outline-none focus:ring-2 focus:ring-ocean-seafoam shadow-sm" placeholder="Express your vulnerability, not blame..." type="text"/>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs text-ocean-body uppercase font-bold">3. What I understand now:</label>
+            <input class="w-full p-3.5 rounded-2xl bg-white border border-[#8CCDE6]/40 text-ocean-title placeholder:text-ocean-muted/60 text-xs outline-none focus:ring-2 focus:ring-ocean-body shadow-sm" placeholder="I see that you were feeling..." type="text"/>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs text-ocean-accent uppercase font-bold">4. What I am sorry for:</label>
+            <input class="w-full p-3.5 rounded-2xl bg-white border border-[#8CCDE6]/40 text-ocean-title placeholder:text-ocean-muted/60 text-xs outline-none focus:ring-2 focus:ring-ocean-accent shadow-sm" placeholder="I apologize sincerely for..." type="text"/>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs text-ocean-seafoam uppercase font-bold">5. What we promise for tomorrow:</label>
+            <input class="w-full p-3.5 rounded-2xl bg-white border border-[#8CCDE6]/40 text-ocean-title placeholder:text-ocean-muted/60 text-xs outline-none focus:ring-2 focus:ring-ocean-seafoam shadow-sm" placeholder="Our commitment together..." type="text"/>
+          </div>
+          <div class="flex justify-center mt-4">
+            <button class="px-8 py-3.5 rounded-full bg-ocean-accent text-white text-sm font-bold shadow-md hover:bg-ocean-title transition-all flex items-center gap-2" type="button">
+              <span class="material-symbols-outlined text-[20px]">favorite</span>
+              Resolve with Love &amp; Forgiveness
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 15: FINAL CINEMATIC VIDEO & REFINED FOOTER                     -->
+    <!-- ======================================================================= -->
+    <section class="relative w-full px-6 py-16 max-w-5xl mx-auto text-center">
+      <div class="text-center max-w-xl mx-auto mb-8">
+        <span class="text-xs text-ocean-accent uppercase tracking-[0.25em] font-bold">Cinema Reliquary</span>
+        <h2 class="font-display text-3xl md:text-4xl text-ocean-title mt-1 font-bold">Our Journey in 4K</h2>
+        <p class="text-sm text-ocean-body mt-2">A thousand cherished moments preserved in one continuous reel.</p>
+      </div>
+
+      <div class="w-full aspect-video rounded-3xl overflow-hidden relative shadow-2xl frosted-glass border-4 border-white group">
+        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Cinematic ocean sunset silhouette of Ahmed and Anfal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvEj4zQbkQOgSeMWCCpinubobnXrPc_BjdZq3zLysMoH49gVpLPrJ5oiLl8AtG0en2Np3y_cU-_Fhgs0KXv3ubr3VlXUpC-IFbevyqiFFhnr4z7okv6S9WscZRi1Y22XNo0pbYK0_80GXsj2V7R57WqobXpw1r7jmU4v_AyxJmStyB-8ZtKv1hlHaNQjEsC-5Y84cOfrBJ0LVgVoNOx_e8g8r7bkDfQCyo3at0VloPyHCqDs0YvMoWPQ"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-ocean-title/60 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <button class="w-20 h-20 rounded-full bg-white/90 text-ocean-accent shadow-2xl flex items-center justify-center hover:scale-110 transition-transform border border-white" type="button">
+            <span class="material-symbols-outlined text-[40px] pl-1">play_arrow</span>
+          </button>
+        </div>
+        <div class="absolute bottom-6 inset-x-6 flex items-center justify-between text-white text-xs font-semibold">
+          <span>00:00</span>
+          <span class="font-display italic text-sm">“A Thousand Moments In One Reel”</span>
+          <span>07:38</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Sanctuary Footer -->
+    <footer class="w-full py-16 text-center border-t border-white/60 bg-white/40 backdrop-blur-md">
+      <div class="max-w-2xl mx-auto flex flex-col items-center gap-3 px-6">
+        <span class="font-display text-2xl text-ocean-title font-bold">3zab ♡ Nouna — Our little universe, forever.</span>
+        <p class="text-xs text-ocean-body leading-relaxed">
+          Anchored at -4,820 Fathoms in sunny serenity. Reaching for the stars together through every lifetime.
+        </p>
+        <span class="text-[10px] text-ocean-muted mt-4 font-bold uppercase tracking-widest">
+          © 2026 The Submerged Sanctuary. Ahmed &amp; Anfal Private Archive.
+        </span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- LIGHT SKY-BLUE WATER CAUSTICS SHADER SCRIPT                               -->
+  <!-- ========================================================================= -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('caustics-canvas');
+      if (!canvas) return;
+
+      function syncSize() {
+        const w = window.innerWidth || 1280;
+        const h = window.innerHeight || 720;
+        if (canvas.width !== w || canvas.height !== h) {
+          canvas.width = w;
+          canvas.height = h;
+        }
+      }
+      syncSize();
+      window.addEventListener('resize', syncSize);
+
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (!gl) return;
+
+      const vs = `attribute vec2 a_pos; varying vec2 v_uv;
+        void main() { v_uv = a_pos * 0.5 + 0.5; gl_Position = vec4(a_pos, 0.0, 1.0); }`;
+
+      const fs = `precision highp float;
+        uniform float u_time; uniform vec2 u_res;
+
+        vec2 hash(vec2 p) {
+          p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
+          return -1.0 + 2.0 * fract(sin(p) * 43758.5453123);
+        }
+        float noise(vec2 p) {
+          vec2 i = floor(p); vec2 f = fract(p);
+          vec2 u = f*f*(3.0-2.0*f);
+          return mix(mix(dot(hash(i+vec2(0.0,0.0)), f-vec2(0.0,0.0)),
+                         dot(hash(i+vec2(1.0,0.0)), f-vec2(1.0,0.0)), u.x),
+                     mix(dot(hash(i+vec2(0.0,1.0)), f-vec2(0.0,1.0)),
+                         dot(hash(i+vec2(1.0,1.0)), f-vec2(1.0,1.0)), u.x), u.y);
+        }
+        float fbm(vec2 p) {
+          float v = 0.0; float a = 0.5;
+          mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.5));
+          for (int i=0; i<3; ++i) { v += a * noise(p); p = rot * p * 2.0 + vec2(0.08 * u_time); a *= 0.5; }
+          return v;
+        }
+
+        void main() {
+          vec2 uv = gl_FragCoord.xy / u_res.xy;
+          vec2 p = uv * 3.2;
+          float t = u_time * 0.14;
+          vec2 q = vec2(fbm(p + vec2(t*0.3, t*0.15)), fbm(p + vec2(-t*0.2, t*0.4)));
+          float f = fbm(p + 1.8 * q);
+
+          vec3 skyTop = vec3(0.92, 0.97, 1.0);
+          vec3 lagoonDepth = vec3(0.722, 0.894, 0.961);
+          vec3 col = mix(lagoonDepth, skyTop, uv.y);
+
+          float sunRays = sin(uv.x * 9.0 + uv.y * 2.5 + u_time * 0.25) * 0.5 + 0.5;
+          sunRays *= smoothstep(0.1, 0.9, uv.y);
+
+          float caustics = pow(clamp(f + 0.2, 0.0, 1.0), 3.5);
+          col += vec3(1.0, 1.0, 1.0) * caustics * 0.35 * (0.6 + 0.4 * sunRays);
+          col += vec3(0.455, 0.710, 0.733) * pow(clamp(f, 0.0, 1.0), 4.0) * 0.15;
+
+          gl_FragColor = vec4(col, 1.0);
+        }`;
+
+      function compile(type, src) {
+        const s = gl.createShader(type);
+        gl.shaderSource(s, src);
+        gl.compileShader(s);
+        return s;
+      }
+      const prog = gl.createProgram();
+      gl.attachShader(prog, compile(gl.VERTEX_SHADER, vs));
+      gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fs));
+      gl.linkProgram(prog);
+      gl.useProgram(prog);
+
+      const buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+
+      const pos = gl.getAttribLocation(prog, 'a_pos');
+      gl.enableVertexAttribArray(pos);
+      gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+
+      const uTime = gl.getUniformLocation(prog, 'u_time');
+      const uRes = gl.getUniformLocation(prog, 'u_res');
+
+      function render(t) {
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        if (uTime) gl.uniform1f(uTime, t * 0.001);
+        if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        requestAnimationFrame(render);
+      }
+      requestAnimationFrame(render);
+    })();
+  </script>
+</body>
+</html>
